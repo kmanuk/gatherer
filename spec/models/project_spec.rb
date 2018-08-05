@@ -60,11 +60,15 @@ describe "estimates" do
     project.due_date = 6.week.from_now
     expect(project).to be_on_schedule
   end
+end
 
-  # it "properly handles a blank project" do
-  #   expect(project.completed_velocity).to eq(0)
-  #   expect(project.current_rate).to eq(0)
-  #   expect(project.projected_days_remaining).to be_nan
-  #   expect(project).not_to be_on_schedule
-  # end
+describe 'Blank Project' do
+  let!(:project) { Project.new }
+
+  it "properly handles a blank project" do
+    expect(project.completed_velocity).to eq(0)
+    expect(project.current_rate).to eq(0)
+    expect(project.projected_days_remaining).to be_nan
+    expect(project).not_to be_on_schedule
+  end
 end
