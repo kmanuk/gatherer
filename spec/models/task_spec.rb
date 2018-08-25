@@ -11,6 +11,8 @@ RSpec.describe Task do
     task.mark_completed
     expect(task).to be_complete
   end
+
+  it_should_behave_like 'sizeable'
 end
 
 describe "velocity" do

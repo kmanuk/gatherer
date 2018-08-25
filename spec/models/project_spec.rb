@@ -18,6 +18,10 @@ RSpec.describe Project do
     task.mark_completed
     expect(project).to be_done
   end
+
+  it_should_behave_like "sizeable" do
+    let(:instance) { Project.new }
+  end
 end
 
 describe "estimates" do
@@ -32,11 +36,12 @@ describe "estimates" do
   end
 
   it "can calculate total size" do
-    expect(project.total_size).to eq(10)
+    expect(project).to be_of_size(10)
+    expect(project).not_to be_of_size(5)
   end
 
   it "can calculate remaining size" do
-    expect(project.remaining_size).to eq(5)
+    expect(project).to be_of_size(5).for_incomplete_tasks_only
   end
 
   it "knows its velocity" do
