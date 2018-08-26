@@ -14,7 +14,7 @@ class Project < ApplicationRecord
   end
 
   def done?
-    tasks.all?(&:complete?)
+    incomplete_tasks.empty?
   end
 
   def size

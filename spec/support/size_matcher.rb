@@ -1,6 +1,6 @@
 RSpec::Matchers.define :be_of_size do |expected|
   match do |actual|
-    size_to_check = @inclomplete ? actual.remaining_size : actual.size
+    size_to_check = @incomplete ? actual.remaining_size : actual.size
     size_to_check == expected
   end
 
@@ -17,6 +17,6 @@ RSpec::Matchers.define :be_of_size do |expected|
   end
 
   chain :for_incomplete_tasks_only do
-    @inclomplete = true
+    @incomplete = true
   end
 end
